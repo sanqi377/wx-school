@@ -1,0 +1,24 @@
+<view hidden="{{isShow}}" catchtouchmove="return">
+    <!-- 背景遮罩层 -->
+    <view class="bgmask" style="height: {{bodyHeight}}px"></view>
+
+    <!-- dialog 弹出层主体 -->
+    <view class="container" style="top:{{(classHeight / 2) + windowHeight}}px;left:{{windowWidth / 2}}px;">
+        <view class="header">
+            {{title}}
+        </view>
+        <view class="content">
+            <view style="padding: 10px">
+                {{content}}
+            </view>
+        </view>
+        <view class="footer">
+            <view class="left" catchtap="cancle">
+                {{cancle}}
+            </view>
+            <view class="right" catchtap="enter">
+                {{enter}}
+            </view>
+        </view>
+    </view>
+</view>

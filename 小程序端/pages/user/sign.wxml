@@ -1,0 +1,9 @@
+<view class="sign_header">
+    <text>签到记录</text>
+</view>
+<view class="sign_content">
+    <view class="list" wx:for="{{signLog}}">
+        <text>叁柒</text>
+        <text class="time">{{item.addtime}}</text>
+    </view>
+</view>

@@ -1,0 +1,52 @@
+<view class="header">
+    <view class="userinfo">
+        <image src="{{avatarUrl}}"></image>
+        <text>{{userName}}</text>
+        <block wx:if="{{sign == 1}}">
+            <view class="sign">已签到 ></view>
+        </block>
+        <block wx:else="{{!sign}}">
+            <view class="sign" catchtap="sign">签到 ></view>
+        </block>
+    </view>
+    <view class="sign_box">
+        <view class="left">
+            <text>本月签到天数</text>
+            <text class="big">{{sign_day}}<text>天</text></text>
+            <text class="small">签到记录</text>
+            <image src="../../static/icon/user-jt.png" />
+        </view>
+        <view class="right">
+            <text>本周课时总数</text>
+            <text class="big">15<text>节</text></text>
+            <text class="small">立即选课</text>
+            <image src="../../static/icon/user-jt.png" />
+        </view>
+    </view>
+</view>
+<view class="menu_box">
+    <view class="menu_list">
+        <view class="item">
+            <navigator url="/pages/user/sign" hover-class="none">
+                <image src="../../static/icon/healthy.png"></image>
+                <text>签到记录</text>
+            </navigator>
+        </view>
+        <view class="item">
+            <navigator url="/pages/class/add" hover-class="none">
+                <image src="../../static/icon/user-classs.png"></image>
+                <text>课程添加</text>
+            </navigator>
+        </view>
+        <view class="item">
+            <navigator url="/pages/class/log" hover-class="none">
+                <image src="../../static/icon/class-log.png"></image>
+                <text>课程记录</text>
+            </navigator>
+        </view>
+        <view class="item">
+            <image src="../../static/icon/user-out.png"></image>
+            <text>退出登陆</text>
+        </view>
+    </view>
+</view>

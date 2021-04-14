@@ -1,0 +1,41 @@
+.sign_header {
+    padding: 0 15px;
+    margin-top: 15px;
+}
+.sign_header>text {
+    margin-left: 10px;
+    position: relative;
+}
+
+.sign_header>text::after {
+    content: "";
+    width: 5px;
+    height: 25px;
+    background: #3585fd;
+    position: absolute;
+    top: -2px;
+    left: -15px;
+    border-radius: 20px;
+    box-shadow: 2px 5px 5px rgb(53, 133, 253,.5);
+}
+
+.sign_content .list {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #d9d9d9;
+    margin-bottom: 15px;
+    z-index: 99;
+}
+
+.sign_content .list .time {
+    color: #868686;
+}
+
+.sign_content {
+    padding: 15px;
+    padding-top: 25px;
+}
+
+.sign_content text {
+    display: block;
+    margin-bottom: 5px;
+}

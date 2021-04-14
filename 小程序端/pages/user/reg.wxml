@@ -1,0 +1,14 @@
+<view class="header">
+    <text>Welecom，
+
+        请完善以下信息</text>
+</view>
+<view class="form">
+    <input type="text" placeholder="账号" bindinput="username" />
+    <input type="password" placeholder="密码" bindinput="password" />
+    <view class="identity">
+        <view class="left {{actives}}" catchtap="actives">学生</view>
+        <view class="right {{activet}}" catchtap="activet">教师</view>
+    </view>
+    <view class="login" catchtap="reg">注册</view>
+</view>

@@ -1,0 +1,60 @@
+.bgmask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000000;
+    width: 100%;
+    height: 100%;
+    opacity: .3;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.container {
+    position: absolute;
+    margin: 0;
+    transform: translate(-300rpx, -300rpx);
+    width: 600rpx;
+    height: 600rpx;
+    background: #ffffff;
+    box-shadow: 0 5px 5px #ccc;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 999;
+}
+
+.container .header {
+    font-weight: 300;
+    height: 15%;
+    line-height: 3;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.container .content {
+    height: 70%;
+    text-align: left;
+    font-weight: 300;
+}
+
+.container .footer {
+    display: inline-flex;
+    width: 100%;
+    height: 15%;
+    line-height: 3.5;
+    border-top: 1px solid #d9d9d9;
+}
+
+.container .footer>view {
+    margin: 0 auto;
+    width: 100%;
+    font-size: 14px;
+}
+
+.container .footer .left {
+    color: #333;
+}
+
+.container .footer .right {
+    color: #5296fc;
+    border-left: 1px solid #d9d9d9;
+}

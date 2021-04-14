@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "select-date-time": "../../components/select-date-time/select-date-time",
+    "select-date-day": "../../components/select-date-day/select-date-day"
+  },
+  "disableScroll": true
+}

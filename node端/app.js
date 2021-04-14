@@ -1,0 +1,1 @@
+const { User, userModel } = require('./config/index');

@@ -1,0 +1,49 @@
+<view style="background: #f6f6f6;min-height: 100vh;padding-bottom: 15px;" id="container">
+    <view class="classxi">
+        <view class="class_box" wx:for="{{classList}}">
+            <view class="header">
+                <image src="../../static/icon/user-class.png" />
+                <text class="title">课程详情</text>
+                <button wx:if="{{item.class_is == 1}}" type="warn" class="isclass"
+                        style="line-height: 1 !important;background:#9da1a5 !important;box-shadow: 0 5px 15px rgb(157, 161, 165,.5) !important;">已选</button>
+                    <button wx:elif="{{item.class_is == 0}}" type="warn" class="goclass"
+                        style="line-height: 1 !important;" catchtap="showClass" data-id="{{item.id}}">去上课</button>
+                <!-- <block wx:if="{{item.class_status == 1}}">
+                    <button wx:if="{{item.class_is == 1}}" type="warn" class="isclass"
+                        style="line-height: 1 !important;background:#9da1a5 !important;box-shadow: 0 5px 15px rgb(157, 161, 165,.5) !important;">已选</button>
+                    <button wx:elif="{{item.class_is == 0}}" type="warn" class="goclass"
+                        style="line-height: 1 !important;" catchtap="showClass" data-id="{{item.id}}">去上课</button>
+                </block>
+                <button wx:elif="{{item.class_status == 2}}" type="warn" class="isclass"
+                    style="line-height: 1 !important;background:#d80d0d !important;box-shadow: 0 5px 15px rgb(216, 13, 13,.5) !important;">已满</button> -->
+            </view>
+            <view class="content">
+                <view class="item">
+                    <text class="left">课程名称：</text>
+                    <text class="right">{{item.class_name}}</text>
+                </view>
+                <view class="item">
+                    <text class="left">上课日期：</text>
+                    <text class="right">{{item.class_day}}</text>
+                </view>
+                <view class="item">
+                    <text class="left">上课时间：</text>
+                    <text class="right">{{item.class_start}} - {{item.class_end}}</text>
+                </view>
+                <view class="item">
+                    <text class="left">课堂老师：</text>
+                    <text class="right">{{item.class_teacher}}</text>
+                </view>
+                <view class="item">
+                    <text class="left">上课教室：</text>
+                    <text class="right">{{item.class_room}}</text>
+                </view>
+                <view class="item">
+                    <text class="left">本堂人数：</text>
+                    <text class="right">{{item.class_pnum}}/{{item.class_num}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<dialog id="dialog" bind:enter="enter" cancel="取消" enter="确认" title="课堂规则" content="{{content}}"></dialog>

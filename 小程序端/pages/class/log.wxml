@@ -1,0 +1,55 @@
+<view style="background: #f6f6f6;height:100vh">
+    <view class="container">
+        <view class="tabs">
+            <block wx:for="{{tabs}}">
+                <view class="item">
+                    <view class="nav {{item.active ? 'active' : ''}}" data-id="{{item.id}}" catchtap="clickTab">
+                        {{item.name}}
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="content">
+            <block wx:if="{{defaultContent}}">
+                <block wx:for="{{defaultContent}}">
+                    <view class="item">
+                        <view class="name">
+                            <view>{{item.class_name}}</view>
+                            <view wx:if="{{item.status == 1}}">
+                                <button data-id="{{item.id}}" size="mini" catchtap="cancel">取消</button>
+                            </view>
+                        </view>
+                        <view class="list">
+                            <view class="left">
+                                {{item.class_teacher}} / {{item.class_room}}
+                            </view>
+                            <view class="right">
+                                {{item.addtime}}
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+            <block wx:elif="{{!defaultContent}}">
+                <block wx:for="{{useContent}}">
+                    <view class="item">
+                        <view class="name">
+                            <view>{{item.class_name}}</view>
+                            <view wx:if="{{item.status == 1}}">
+                                <button data-id="{{item.id}}" size="mini" catchtap="cancel">取消</button>
+                            </view>
+                        </view>
+                        <view class="list">
+                            <view class="left">
+                                {{item.class_teacher}} / {{item.class_room}}
+                            </view>
+                            <view class="right">
+                                {{item.addtime}}
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,25 @@
+button[type='success'] {
+    width: 100% !important;
+    height: 50px;
+    line-height: 2 !important;
+    background: #5296fc;
+    box-shadow: 0 10px 15px rgb(82, 150, 252,.5);
+    color: #ffffff !important;
+    border-radius: 35px;
+    font-weight: 400;
+}
+
+button[type='warn'] {
+    width: 100% !important;
+    height: 50px;
+    line-height: 2 !important;
+    background: #f46c22 !important;
+    box-shadow: 0 10px 15px rgb(244, 108, 34,.5);
+    color: #ffffff !important;
+    border-radius: 35px;
+    font-weight: 400;
+}
+
+page {
+    background: #f6f6f6;
+}

@@ -1,0 +1,125 @@
+.header {
+    width: 100%;
+    background-image: linear-gradient(135deg, #DE4313 10%, #FEC163 100%);
+    padding: 10px 15px;
+    height: 130px;
+    line-height: 150px;
+    margin-bottom: 20px;
+}
+
+.header .logo image {
+    background: #ffffff;
+    border-radius: 50%;
+    margin-top: 2px;
+    width: 45px;
+    height: 45px;
+}
+
+.header .logo text {
+    color: #ffffff;
+    margin-left: 15px;
+    position: relative;
+    bottom: 15px;
+    font-size: 17px;
+}
+
+.notice {
+    background: #ffffff;
+    position: relative;
+    bottom: 35px;
+    line-height: 35px;
+    padding: 5px 10px;
+    margin: 0 10px;
+    border-radius: 8px;
+    font-weight: 300;
+    font-size: 14px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+swiper .notice_icon {
+    vertical-align: middle;
+    margin-bottom: 3px;
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+}
+
+.box {
+    background: #ffffff;
+    padding: 10px 0;
+    margin: 0 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #d0d0d0;
+    margin-top: -20px;
+}
+
+.box>view {
+    display: inline-flex;
+    width: 100%;
+}
+
+.box view {
+    font-weight: 300;
+    font-size: 14px;
+    margin: 0 auto;
+}
+
+.box view .icon {
+    display: block;
+    text-align: center;
+}
+
+.box view image {
+    width: 30px;
+    height: 30px;
+}
+
+.classb {
+    border-radius: 5px;
+    padding: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: 0 0 5px #d0d0d0;
+    background: #ffffff;
+    margin: 0 10px;
+    margin-top: 15px;
+}
+
+.classb .top {
+    font-weight: 300;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.classb .top text {
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.classb .content {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.classb .content>view {
+    flex: 1;
+    margin: 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.classb .content .btn {
+    padding: 2px 0;
+    border-radius: 15px;
+    color: #ffffff;
+    font-weight: 300;
+    background: #f46c22;
+}

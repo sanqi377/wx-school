@@ -1,0 +1,14 @@
+<view class="header">
+    <text>Welecom，
+        
+        欢迎来到完美校园！</text>
+</view>
+<view class="form">
+    <input type="text" placeholder="账号" bindinput="username" />
+    <input type="password" placeholder="密码" bindinput="password" />
+    <button class="login" catchtap="login">登录</button>
+    <view class="item">
+        <text class="left">忘记密码</text>
+        <text class="right" catchtap="toReg">注册账号</text>
+    </view>
+</view>

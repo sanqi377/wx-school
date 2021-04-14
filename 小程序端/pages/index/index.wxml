@@ -1,0 +1,60 @@
+<view class="header">
+    <view class="logo">
+        <image src="/static/img/logo.png"></image>
+        <text>甘肃机电职业技术学院</text>
+    </view>
+</view>
+<view class="notice">
+    <swiper autoplay vertical circular interval="2500" style="height: 35px;">
+        <swiper-item wx:for="{{swiper}}">
+            <image class="notice_icon" src="../../static/icon/notice.png"></image>{{item}}
+        </swiper-item>
+    </swiper>
+</view>
+<view class="box">
+    <view>
+        <view class="item">
+            <view class="icon">
+                <image src="../../static/icon/healthy.png"></image>
+            </view>
+            <view class="name">
+                签到
+            </view>
+        </view>
+        <view>
+            <view class="icon">
+                <image src="../../static/icon/setclass.png"></image>
+            </view>
+            <view class="name">
+                选课
+            </view>
+        </view>
+        <view>
+            <view class="icon">
+                <image src="../../static/icon/leave.png"></image>
+            </view>
+            <view class="name">
+                请假
+            </view>
+        </view>
+        <view>
+            <view class="icon">
+                <image src="../../static/icon/circle.png"></image>
+            </view>
+            <view class="name">
+                圈子
+            </view>
+        </view>
+    </view>
+</view>
+<view class="classb">
+    <view class="top">
+        <text>课程表</text> / 周一
+    </view>
+    <view class="content" wx:for="{{class}}">
+        <view class="btn">{{item.class_room}}</view>
+        <view>{{item.class_start}}</view>
+        <view>{{item.class_bb}}</view>
+        <view>{{item.class_name}}</view>
+    </view>
+</view>

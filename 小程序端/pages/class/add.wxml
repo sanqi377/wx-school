@@ -1,0 +1,13 @@
+<view class="logo">
+    <text>课程添加</text>
+</view>
+<view class="form">
+    <input type="text" placeholder="课程名称" bindinput="classname" />
+    <input type="text" placeholder="任课老师" bindinput="classteacher" />
+    <input type="text" placeholder="上课教室" bindinput="classroom" />
+    <input type="number" placeholder="上课人数" bindinput="classnum" />
+    <select-date-day bind:myevent="getDay" className="上课日期" />
+    <select-date-time bind:myevent="getTimeStart" className="上课时间" />
+    <select-date-time bind:myevent="getTimeEnd" className="下课时间" />
+    <button type="success" catchtap="addClass">添加</button>
+</view>

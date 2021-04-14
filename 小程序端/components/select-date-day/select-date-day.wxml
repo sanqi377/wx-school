@@ -1,0 +1,19 @@
+<view class="text" catchtap="onSelect">
+    <text>{{className}}</text>
+</view>
+<view class="container" animation="{{animation}}">
+    <picker-view indicator-class="active" bindchange="bindChange" value="{{value}}">
+        <picker-view-column>
+            <view wx:for="{{months}}" style="height: 50px;line-height: 50px;">{{item}} 月</view>
+        </picker-view-column>
+        <picker-view-column>
+            <view wx:for="{{days}}" style="height: 50px;line-height: 50px;">{{item}} 日</view>
+        </picker-view-column>
+    </picker-view>
+    <view class="left" catchtap="hideSelect">
+        <text>取消</text>
+    </view>
+    <view class="right" catchtap="showSelect">
+        <text>确认</text>
+    </view>
+</view>
