@@ -1,120 +1,56 @@
-const mysql = require('../lib/mysql');
-const config = require('../config/config')
-class db {
-    constructor() {
-        this.connection = mysql.createPool({
-            host: config.MYSQL.host,
-            user: config.MYSQL.user,
-            port: config.MYSQL.port,
-            password: config.MYSQL.pass,
-            database: config.MYSQL.base
-        })
-        this.common = [{
-                message: "服务器出现问题",
-                status: 500
-            },
-            {
-                message: "无法访问资源",
-                status: 404
-            },
-        ]
-    }
+const db = require("../lib/mysql");
+const md5 = require("md5-node");
 
-    select(name, tableName, options) {
-        let self = this;
+module.exports = {
+    // 登录
+    loginUser: (data) => {
         return new Promise((resolve, reject) => {
-            self.connection.getConnection(function(err, conn) {
-                if (err) {
-                    console.log(err)
-                    reject(self.common[0])
-                } else {
-                    if (options) {
-                        var sql = `select ${name.toString()} from ${tableName} where ${options} ORDER BY id DESC`;
+            db.query(`*`, `wx_users`, `where username="${data.username}"`).then(
+                (res) => {
+                    if (!res) resolve({ code: 201, msg: "用户不存在" });
+                    if (md5(data.password + res.salt) == res.password) {
+                        var access_token = md5(res.password + res.salt);
+                        resolve({
+                            code: 200,
+                            msg: "登录成功",
+                            data: {
+                                user_id: res.id,
+                                access_token: access_token,
+                            },
+                        });
                     } else {
-                        var sql = `select ${name.toString()} from ${tableName} ORDER BY id DESC`;
+                        resolve({ code: 201, msg: "密码错误" });
                     }
-                    conn.query(sql, function(err, result) {
-                        if (err) {
-                            reject(self.common[1])
-                        }
-                        conn.release()
-                        resolve({
-                            result
-                        })
-                    })
                 }
-            })
-        }).catch(err => err)
-    }
+            );
+        });
+    },
 
-    insert(tableName, dataOptions, data) {
-        let self = this;
+    // 注册
+    regUser: (data) => {
         return new Promise((resolve, reject) => {
-            self.connection.getConnection(function(err, conn) {
-                if (err) {
-                    console.log(err)
-                    reject(self.common[0])
-                } else {
-                    let sql = `INSERT INTO ${tableName} (${dataOptions}) VALUES (${data})`
-                    conn.query(sql, function(err, result) {
-                        if (err) {
-                            reject(self.common[1])
-                        }
-                        conn.release()
-                        resolve({
-                            result
-                        })
-                    })
+            db.query(`*`, `wx_users`, `where username="${data.username}"`).then(
+                (res) => {
+                    if (res) resolve({ code: 201, msg: "用户已存在" });
+                    var str =
+                        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                    var n = 5,
+                        s = "";
+                    for (var i = 0; i < n; i++) {
+                        var rand = Math.floor(Math.random() * str.length);
+                        s += str.charAt(rand);
+                    }
+                    let salt = s;
+                    let password = md5(data.password + salt);
+                    db.insert(
+                        `username,password,salt`,
+                        `wx_users`,
+                        `"${data.username}","${password}","${salt}"`
+                    ).then(() => {
+                        resolve({ code: 200, msg: "注册成功" });
+                    });
                 }
-            })
-        }).catch(err => err)
-    }
-
-    update(tableName, options, data) {
-        let self = this;
-        return new Promise((resolve, reject) => {
-            self.connection.getConnection(function(err, conn) {
-                if (err) {
-                    console.log(err)
-                    reject(self.common[0])
-                } else {
-                    let sql = `UPDATE ${tableName} SET ${data} WHERE ${options}`;
-                    conn.query(sql, function(err, result) {
-                        if (err) {
-                            reject(self.common[1])
-                        }
-                        conn.release()
-                        resolve({
-                            result
-                        })
-                    })
-                }
-            })
-        }).catch(err => err)
-    }
-
-    // 两表联合查询(内连接查询)
-    join(leftField, rightField, leftName, RightName, leftWhere, rightWhere) {
-        let self = this;
-        return new Promise((resolve, reject) => {
-            self.connection.getConnection(function(err, conn) {
-                if (err) {
-                    console.log(err)
-                    reject(self.common[0])
-                } else {
-                    let sql = `select ${leftField},${rightField} from ${leftName} join ${RightName} on ${leftWhere}=${rightWhere} ORDER BY addtime DESC`;
-                    conn.query(sql, function(err, result) {
-                        if (err) {
-                            reject(self.common[1])
-                        }
-                        conn.release()
-                        resolve({
-                            result
-                        })
-                    })
-                }
-            })
-        }).catch(err => err)
-    }
-}
-module.exports = db;
+            );
+        });
+    },
+};

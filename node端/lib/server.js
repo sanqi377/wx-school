@@ -1,16 +1,21 @@
-// 引入 express 模块
-const express = require('express');
+const config = require("../config/config");
 
-// 初始化模块
+const express = require("express");
+
+const userRouter = require("../router/User");
+
 const app = express();
 
-// 中间件设置返回数据格式
-app.use(express.urlencoded({
-    extended: true
-}));
+// app.use(
+//     express.urlencoded({
+//         extended: true,
+//     })
+// );
 
-// 配置监听端口
-app.listen(3000);
+app.use(express.json());
 
-// 导出模块
+app.use("/user", userRouter);
+
+app.listen(config.EXPRESS.port);
+
 module.exports = app;

@@ -1,1 +1,1 @@
-const { User, userModel } = require('./config/index');
+require("./lib/server");
