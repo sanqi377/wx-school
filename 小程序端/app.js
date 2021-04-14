@@ -1,3 +1,5 @@
+wx.$common = require("./public/common")
+
 App({
 
     /**

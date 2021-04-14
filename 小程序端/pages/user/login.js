@@ -15,7 +15,7 @@ Page({
         })
     },
 
-    login: function() {
+    login: function () {
         if (!username) {
             wx.showToast({
                 title: '请输入账号',
@@ -38,46 +38,37 @@ Page({
                     key: 'userinfo',
                     data: res.userInfo,
                     success: function () {
-                        wx.request({
-                            url: 'http://localhost:3000/user/login',
-                            method: 'POST',
-                            header: {
-                                'content-type': 'application/x-www-form-urlencoded'
-                            },
-                            data: {
-                                username: username,
-                                password: password
-
-                            },
-                            success: function (res) {
-                                if (res.data.code == 201 || res.data.code == 202) {
-                                    wx.showToast({
-                                        title: res.data.msg,
-                                        icon: 'error'
-                                    })
-                                    return;
-                                }
+                        wx.$common.request({ url: "/user/login", type: "post" }, {
+                            username: username,
+                            password: password
+                        }).then((res) => {
+                            if (res.data.code != 200) {
                                 wx.showToast({
                                     title: res.data.msg,
-                                    success: function () {
-                                        wx.setStorage({
-                                            key: 'user_id',
-                                            data: res.data.data.user_id,
-                                            success: function () {
-                                                wx.setStorage({
-                                                    key: 'token',
-                                                    data: res.data.data.token,
-                                                    success: function () {
-                                                        wx.reLaunch({
-                                                            url: '/pages/index/index',
-                                                        })
-                                                    }
-                                                })
-                                            }
-                                        })
-                                    }
+                                    icon: 'error'
                                 })
+                                return;
                             }
+                            wx.showToast({
+                                title: res.data.msg,
+                                success: function () {
+                                    wx.setStorage({
+                                        key: 'user_id',
+                                        data: res.data.data.user_id,
+                                        success: function () {
+                                            wx.setStorage({
+                                                key: 'access_token',
+                                                data: res.data.data.access_token,
+                                                success: function () {
+                                                    wx.reLaunch({
+                                                        url: '/pages/index/index',
+                                                    })
+                                                }
+                                            })
+                                        }
+                                    })
+                                }
+                            })
                         })
                     }
                 })

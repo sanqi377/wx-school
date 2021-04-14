@@ -1,4 +1,11 @@
 const config = {
+    WX:{
+        // 不用验证 token 的路由
+        freeCheck: [
+            "/user/login",
+            "/user/reg"
+        ]
+    },
     MYSQL: {
         host: "localhost",
         user: "root",

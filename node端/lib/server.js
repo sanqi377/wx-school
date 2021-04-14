@@ -14,6 +14,19 @@ const app = express();
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+    config.WX.freeCheck.forEach((val) => {
+        if (val == req.path) next();
+    });
+    let data = "";
+    if (req.method == "POST") {
+        data = req.body;
+    } else if (req.method == "GET") {
+        data = req.query;
+    }
+    next();
+});
+
 app.use("/user", userRouter);
 
 app.listen(config.EXPRESS.port);
